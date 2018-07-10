@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public interface UserDao {
 
-    void save(User user) throws SQLException;
+    void saveUser(User user) throws SQLException;
 
-    User findByCode(String code) throws SQLException;
+    User findUserByCode(String code) throws SQLException;
 
-    void update(User user) throws SQLException;
+    void updateUser(User user) throws SQLException;
 
-    User find(String username, String password) throws SQLException;
+    User findUser(String username, String password) throws SQLException;
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class UserDaoImpl implements UserDao {
 
     @Override
-    public void save(User user) throws SQLException {
+    public void saveUser(User user) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
         String sql = "insert into " +
                 "user(uid, username, password, name, email, telephone, birthday, sex, state, code) " +
@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User findByCode(String code) throws SQLException {
+    public User findUserByCode(String code) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 
         String sql = "select " +
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(User user) throws SQLException {
+    public void updateUser(User user) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 
         String sql = "update user set " +
@@ -51,7 +51,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User find(String username, String password) throws SQLException {
+    public User findUser(String username, String password) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 
         String sql = "select u.uid, u.username, u.password, u.name, u.email, u.telephone, u.birthday, u.sex, u.state, u.code " +

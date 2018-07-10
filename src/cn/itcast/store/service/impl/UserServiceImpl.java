@@ -14,9 +14,9 @@ public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
 
     @Override
-    public void regist(User user) throws SQLException {
+    public void registerUser(User user) throws SQLException {
         //保存用户
-        userDao.save(user);
+        userDao.saveUser(user);
 
         //发送邮件
         try {
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     public void activeUser(String code) throws SQLException {
        if (code != null && code != "") {
 
-           User existUser = userDao.findByCode(code);
+           User existUser = userDao.findUserByCode(code);
 
 
            if (null == existUser) {
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
            existUser.setState(1);
            existUser.setCode(null);
-           userDao.update(existUser);
+           userDao.updateUser(existUser);
        } else {
            throw new RuntimeException("用户激活无效，请从新发送邮件");
        }
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(User user) throws SQLException {
-        return userDao.find(user.getUsername(), user.getPassword());
+    public User loginUser(User user) throws SQLException {
+        return userDao.findUser(user.getUsername(), user.getPassword());
     }
 }

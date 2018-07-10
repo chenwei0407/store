@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public interface UserService {
 
-    void regist(User user) throws SQLException;
+    void registerUser(User user) throws SQLException;
 
     void activeUser(String code) throws SQLException;
 
-    User login(User user) throws SQLException;
+    User loginUser(User user) throws SQLException;
 }
