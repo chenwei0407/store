@@ -26,7 +26,7 @@ public class UserServlet extends BaseServlet {
         return "/jsp/register.jsp";
     }
 
-    public String userExists(HttpServletRequest request, HttpServletResponse response)
+    public String isUserExist(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         //接收用户名
         String username = request.getParameter("username");
@@ -126,7 +126,7 @@ public class UserServlet extends BaseServlet {
 
             //3 处理成功
             if (loginUser != null) {
-                //#1 自动登陆
+                //#1 自动登陆 START
                 String autoLogin = request.getParameter("autoLogin");
 
                 if ("1".equals(autoLogin)) {
@@ -171,7 +171,7 @@ public class UserServlet extends BaseServlet {
         request.getSession().removeAttribute("loginUser");
 
         //2 重定向到首页
-        response.sendRedirect(request.getContextPath() + "/UserServlet?method=registUI");
+        response.sendRedirect(request.getContextPath() + "/");
 
         //3 不适用baseServlet请求转发
         return null;

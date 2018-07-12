@@ -10,6 +10,12 @@ import java.sql.SQLException;
 
 public class UserDaoImpl implements UserDao {
 
+    /**
+     * 保存用户
+     *
+     * @param user
+     * @throws SQLException
+     */
     @Override
     public void saveUser(User user) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
@@ -18,11 +24,17 @@ public class UserDaoImpl implements UserDao {
                 "values (?,?,?,?,?,?,?,?,?,?)";
         Object[] params = {user.getUid(), user.getUsername(), user.getPassword(), user.getName(),
                 user.getEmail(), user.getTelephone(), user.getBirthday(), user.getSex(), user.getState(),
-                user.getState(), user.getCode()};
+                user.getCode()};
 
         queryRunner.update(sql, params);
     }
 
+    /**
+     * 用户注册码寻找用户
+     * @param code
+     * @return
+     * @throws SQLException
+     */
     @Override
     public User findUserByCode(String code) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
@@ -36,6 +48,11 @@ public class UserDaoImpl implements UserDao {
         return existUser;
     }
 
+    /**
+     * 更新用户
+     * @param user
+     * @throws SQLException
+     */
     @Override
     public void updateUser(User user) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
@@ -45,11 +62,18 @@ public class UserDaoImpl implements UserDao {
                 "where uid=?";
 
         Object[] params = {user.getUsername(), user.getPassword(), user.getName(),
-                user.getEmail(), user.getTelephone(), user.getBirthday(), user.getSex(), user.getState(), user.getCode()};
+                user.getEmail(), user.getTelephone(), user.getBirthday(), user.getSex(), user.getState(), user.getCode(), user.getUid()};
 
         queryRunner.update(sql, params);
     }
 
+    /**
+     * 寻找用户
+     * @param username
+     * @param password
+     * @return
+     * @throws SQLException
+     */
     @Override
     public User findUser(String username, String password) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());

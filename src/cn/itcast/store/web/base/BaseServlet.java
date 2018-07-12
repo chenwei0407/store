@@ -10,6 +10,8 @@ import java.lang.reflect.Method;
 
 public class BaseServlet extends javax.servlet.http.HttpServlet {
 
+    //此方法重写了HttpServlet中的protect void service() 方法
+    //重写后的方法权限只能越来越松 private - (package) - protect - public
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) {
 

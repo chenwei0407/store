@@ -18,12 +18,12 @@ public class UserServiceImpl implements UserService {
         //保存用户
         userDao.saveUser(user);
 
-        //发送邮件
-        try {
-            MailUtils.sendMail(user.getEmail(), user.getCode());
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+//        //发送邮件
+//        try {
+//            MailUtils.sendMail(user.getEmail(), user.getCode());
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
